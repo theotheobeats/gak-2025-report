@@ -508,7 +508,6 @@ export default function Dashboard() {
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Bergabung</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Kehadiran</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rata-rata/Tahun</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tingkat Keterlibatan</th>
                   </tr>
@@ -521,7 +520,6 @@ export default function Dashboard() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{member.name}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.joined_date}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.total_attendances}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.avg_per_year.toFixed(1)}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                             member.status === 'Active' ? 'bg-green-100 text-green-800' :
