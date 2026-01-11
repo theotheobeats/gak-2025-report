@@ -3,15 +3,15 @@
     "rank": 1,
     "name": "'Davin (Yenny Wati",
     "total_attendances": 37,
-    "avg_per_year": 37.0,
-    "engagement_tier": "Medium",
+    "avg_per_year": 47.06,
+    "engagement_tier": "High",
     "status": "Active"
   },
   {
     "rank": 2,
     "name": "Ev. Putri",
     "total_attendances": 36,
-    "avg_per_year": 36.0,
+    "avg_per_year": 44.69,
     "engagement_tier": "Medium",
     "status": "Active"
   },
@@ -19,7 +19,7 @@
     "rank": 3,
     "name": "Marni",
     "total_attendances": 36,
-    "avg_per_year": 36.0,
+    "avg_per_year": 44.69,
     "engagement_tier": "Medium",
     "status": "Active"
   },
@@ -27,7 +27,7 @@
     "rank": 4,
     "name": "Guan",
     "total_attendances": 36,
-    "avg_per_year": 36.0,
+    "avg_per_year": 44.54,
     "engagement_tier": "Medium",
     "status": "Active"
   },
@@ -35,7 +35,7 @@
     "rank": 5,
     "name": "Dkn. Herlina",
     "total_attendances": 35,
-    "avg_per_year": 35.0,
+    "avg_per_year": 43.31,
     "engagement_tier": "Medium",
     "status": "Active"
   },
@@ -43,7 +43,7 @@
     "rank": 6,
     "name": "Candise",
     "total_attendances": 35,
-    "avg_per_year": 35.0,
+    "avg_per_year": 43.45,
     "engagement_tier": "Medium",
     "status": "Active"
   },
@@ -51,7 +51,7 @@
     "rank": 7,
     "name": "Dkn. Anita R",
     "total_attendances": 35,
-    "avg_per_year": 35.0,
+    "avg_per_year": 43.45,
     "engagement_tier": "Medium",
     "status": "Active"
   },
@@ -59,7 +59,7 @@
     "rank": 8,
     "name": "Dkn. Steven",
     "total_attendances": 35,
-    "avg_per_year": 35.0,
+    "avg_per_year": 43.45,
     "engagement_tier": "Medium",
     "status": "Active"
   },
@@ -67,7 +67,7 @@
     "rank": 9,
     "name": "Ev. Maya",
     "total_attendances": 34,
-    "avg_per_year": 34.0,
+    "avg_per_year": 42.21,
     "engagement_tier": "Medium",
     "status": "Active"
   },
@@ -75,7 +75,7 @@
     "rank": 10,
     "name": "Dkn. Lilys",
     "total_attendances": 34,
-    "avg_per_year": 34.0,
+    "avg_per_year": 42.21,
     "engagement_tier": "Medium",
     "status": "Active"
   }

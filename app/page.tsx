@@ -453,7 +453,7 @@ export default function Dashboard() {
 
         {/* Additional Stats */}
         {summary && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg shadow p-6">
               <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide">Tingkat Partisipasi</h3>
               <p className="text-2xl font-bold text-green-600 mt-2">{summary.participation_rate}%</p>
@@ -468,11 +468,6 @@ export default function Dashboard() {
               <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide">Tingkat Churn</h3>
               <p className="text-2xl font-bold text-red-600 mt-2">{summary.churn_rate}%</p>
               <p className="text-sm text-gray-500 mt-1">Jemaat tidak aktif</p>
-            </div>
-            <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide">Cakupan WhatsApp</h3>
-              <p className="text-2xl font-bold text-purple-600 mt-2">{summary.whatsapp_coverage}%</p>
-              <p className="text-sm text-gray-500 mt-1">Dengan nomor WhatsApp</p>
             </div>
           </div>
         )}
