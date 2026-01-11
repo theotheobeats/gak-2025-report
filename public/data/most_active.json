@@ -1,0 +1,82 @@
+[
+  {
+    "rank": 1,
+    "name": "'Davin (Yenny Wati",
+    "total_attendances": 37,
+    "avg_per_month": 3.87,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 2,
+    "name": "Ev. Putri",
+    "total_attendances": 36,
+    "avg_per_month": 3.67,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 3,
+    "name": "Marni",
+    "total_attendances": 36,
+    "avg_per_month": 3.67,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 4,
+    "name": "Guan",
+    "total_attendances": 36,
+    "avg_per_month": 3.66,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 5,
+    "name": "Dkn. Herlina",
+    "total_attendances": 35,
+    "avg_per_month": 3.56,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 6,
+    "name": "Candise",
+    "total_attendances": 35,
+    "avg_per_month": 3.57,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 7,
+    "name": "Dkn. Anita R",
+    "total_attendances": 35,
+    "avg_per_month": 3.57,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 8,
+    "name": "Dkn. Steven",
+    "total_attendances": 35,
+    "avg_per_month": 3.57,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 9,
+    "name": "Ev. Maya",
+    "total_attendances": 34,
+    "avg_per_month": 3.47,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  },
+  {
+    "rank": 10,
+    "name": "Dkn. Lilys",
+    "total_attendances": 34,
+    "avg_per_month": 3.47,
+    "engagement_tier": "Medium",
+    "status": "Active"
+  }
+]
