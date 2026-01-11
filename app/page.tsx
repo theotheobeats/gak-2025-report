@@ -34,7 +34,7 @@ interface Summary {
 interface Lifecycle {
   category: string;
   count: number;
-  [key: string]: any;
+  [key: string]: string | number;
 }
 
 interface Engagement {
@@ -56,7 +56,7 @@ interface MostActive {
   rank: number;
   name: string;
   total_attendances: number;
-  avg_per_month: number;
+  avg_per_year: number;
   engagement_tier: string;
   status: string;
 }
@@ -78,6 +78,22 @@ interface NewMember {
   whatsapp: string;
 }
 
+interface Detailed {
+  name: string;
+  joined_date: string;
+  total_attendances: number;
+  first_attendance: string;
+  last_attendance: string;
+  days_since_last_attendance: number;
+  status: string;
+  is_new_member: boolean;
+  avg_per_year: number;
+  engagement_tier: string;
+  consistency_score: number;
+  whatsapp: string;
+  address: string;
+}
+
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
 export default function Dashboard() {
@@ -89,12 +105,16 @@ export default function Dashboard() {
   const [mostActive, setMostActive] = useState<MostActive[]>([]);
   const [followup, setFollowup] = useState<Followup[]>([]);
   const [newMembers, setNewMembers] = useState<NewMember[]>([]);
+  const [detailed, setDetailed] = useState<Detailed[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'attendance' | 'jemaat'>('dashboard');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 20;
 
   useEffect(() => {
     async function loadData() {
       try {
-        const [summaryRes, lifecycleRes, engagementRes, monthlyRes, yearlyRes, mostActiveRes, followupRes, newMembersRes] = await Promise.all([
+        const [summaryRes, lifecycleRes, engagementRes, monthlyRes, yearlyRes, mostActiveRes, followupRes, newMembersRes, detailedRes] = await Promise.all([
           fetch('/data/summary.json'),
           fetch('/data/lifecycle.json'),
           fetch('/data/engagement.json'),
@@ -103,9 +123,10 @@ export default function Dashboard() {
           fetch('/data/most_active.json'),
           fetch('/data/followup.json'),
           fetch('/data/new_members.json'),
+          fetch('/data/detailed.json'),
         ]);
 
-        const [summaryData, lifecycleData, engagementData, monthlyData, yearlyData, mostActiveData, followupData, newMembersData] = await Promise.all([
+        const [summaryData, lifecycleData, engagementData, monthlyData, yearlyData, mostActiveData, followupData, newMembersData, detailedData] = await Promise.all([
           summaryRes.json(),
           lifecycleRes.json(),
           engagementRes.json(),
@@ -114,6 +135,7 @@ export default function Dashboard() {
           mostActiveRes.json(),
           followupRes.json(),
           newMembersRes.json(),
+          detailedRes.json(),
         ]);
 
         setSummary(summaryData);
@@ -124,6 +146,7 @@ export default function Dashboard() {
         setMostActive(mostActiveData);
         setFollowup(followupData);
         setNewMembers(newMembersData);
+        setDetailed(detailedData);
       } catch (error) {
         console.error('Error loading data:', error);
       } finally {
@@ -159,9 +182,49 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {/* Navigation Tabs */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex space-x-8" aria-label="Tabs">
+            <button
+              onClick={() => setActiveTab('dashboard')}
+              className={`${
+                activeTab === 'dashboard'
+                  ? 'border-blue-500 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab('attendance')}
+              className={`${
+                activeTab === 'attendance'
+                  ? 'border-blue-500 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+            >
+              Data Kehadiran
+            </button>
+            <button
+              onClick={() => setActiveTab('jemaat')}
+              className={`${
+                activeTab === 'jemaat'
+                  ? 'border-blue-500 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+            >
+              Semua Jemaat
+            </button>
+          </nav>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Summary Cards */}
-        {summary && (
+        {activeTab === 'dashboard' && (
+          <>
+            {/* Summary Cards */}
+            {summary && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div className="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500">
               <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide">Total Jemaat</h3>
@@ -198,7 +261,10 @@ export default function Dashboard() {
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={(entry: any) => `${entry.category}: ${entry.count}`}
+                  label={(entry: unknown) => {
+                    const e = entry as { category?: string; count?: number };
+                    return `${e.category}: ${e.count}`;
+                  }}
                   outerRadius={100}
                   fill="#8884d8"
                   dataKey="count"
@@ -245,7 +311,7 @@ export default function Dashboard() {
                 />
                 <YAxis />
                 <Tooltip
-                  formatter={(value: any) => [value, 'Kehadiran']}
+                  formatter={(value: string | number | undefined) => [value ?? 0, 'Kehadiran']}
                   labelFormatter={(label: string) => `Bulan: ${label}`}
                 />
                 <Legend />
@@ -288,6 +354,7 @@ export default function Dashboard() {
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Peringkat</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rata-rata/Tahun</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                   </tr>
                 </thead>
@@ -297,6 +364,7 @@ export default function Dashboard() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">#{member.rank}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{member.name}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.total_attendances}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.avg_per_year.toFixed(1)}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                           member.status === 'Active' ? 'bg-green-100 text-green-800' :
@@ -406,6 +474,109 @@ export default function Dashboard() {
               <p className="text-2xl font-bold text-purple-600 mt-2">{summary.whatsapp_coverage}%</p>
               <p className="text-sm text-gray-500 mt-1">Dengan nomor WhatsApp</p>
             </div>
+          </div>
+        )}
+          </>
+        )}
+
+        {activeTab === 'attendance' && (
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Data Kehadiran Bulanan</h2>
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bulan</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Kehadiran</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {monthly.map((item, index) => (
+                    <tr key={index} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.month}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.total_attendances}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'jemaat' && (
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Semua Data Jemaat</h2>
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Bergabung</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Kehadiran</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rata-rata/Tahun</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tingkat Keterlibatan</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {detailed
+                    .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+                    .map((member, index) => (
+                      <tr key={index} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{member.name}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.joined_date}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.total_attendances}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.avg_per_year.toFixed(1)}</td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            member.status === 'Active' ? 'bg-green-100 text-green-800' :
+                            member.status === 'At-Risk' ? 'bg-yellow-100 text-yellow-800' :
+                            'bg-red-100 text-red-800'
+                          }`}>
+                            {member.status}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            member.engagement_tier === 'High' ? 'bg-blue-100 text-blue-800' :
+                            member.engagement_tier === 'Medium' ? 'bg-purple-100 text-purple-800' :
+                            'bg-gray-100 text-gray-800'
+                          }`}>
+                            {member.engagement_tier}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+
+            {detailed.length > itemsPerPage && (
+              <div className="mt-4 flex items-center justify-between">
+                <div className="text-sm text-gray-700">
+                  Menampilkan {(currentPage - 1) * itemsPerPage + 1} hingga {Math.min(currentPage * itemsPerPage, detailed.length)} dari {detailed.length} jemaat
+                </div>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Sebelumnya
+                  </button>
+                  <span className="px-3 py-1 text-sm text-gray-700">
+                    Halaman {currentPage} dari {Math.ceil(detailed.length / itemsPerPage)}
+                  </span>
+                  <button
+                    onClick={() => setCurrentPage(prev => Math.min(Math.ceil(detailed.length / itemsPerPage), prev + 1))}
+                    disabled={currentPage === Math.ceil(detailed.length / itemsPerPage)}
+                    className="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Selanjutnya
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

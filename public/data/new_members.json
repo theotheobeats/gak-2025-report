@@ -2,7 +2,7 @@
   {
     "name": "Chris lauren",
     "joined_date": "2025-12-07",
-    "days_since_join": 32,
+    "days_since_join": 35,
     "total_attendances": 1,
     "status": "At-Risk",
     "whatsapp": ""
@@ -10,7 +10,7 @@
   {
     "name": "Pdt. Obed nego",
     "joined_date": "2025-12-07",
-    "days_since_join": 32,
+    "days_since_join": 35,
     "total_attendances": 1,
     "status": "At-Risk",
     "whatsapp": ""
@@ -18,7 +18,7 @@
   {
     "name": "Florence luvena",
     "joined_date": "2025-12-07",
-    "days_since_join": 32,
+    "days_since_join": 35,
     "total_attendances": 2,
     "status": "Active",
     "whatsapp": ""
@@ -26,7 +26,7 @@
   {
     "name": "Soegiono suami yenti",
     "joined_date": "2025-12-28",
-    "days_since_join": 11,
+    "days_since_join": 14,
     "total_attendances": 1,
     "status": "Active",
     "whatsapp": ""
@@ -34,23 +34,15 @@
   {
     "name": "Yesi Novi yanti",
     "joined_date": "2025-12-07",
-    "days_since_join": 32,
+    "days_since_join": 35,
     "total_attendances": 3,
     "status": "Active",
     "whatsapp": ""
   },
   {
-    "name": "Ev. Yohanes ",
-    "joined_date": "2025-10-12",
-    "days_since_join": 88,
-    "total_attendances": 1,
-    "status": "At-Risk",
-    "whatsapp": ""
-  },
-  {
     "name": "Laurensia",
     "joined_date": "2025-11-02",
-    "days_since_join": 67,
+    "days_since_join": 70,
     "total_attendances": 1,
     "status": "At-Risk",
     "whatsapp": ""
@@ -58,7 +50,7 @@
   {
     "name": "Linda adik suicen",
     "joined_date": "2025-12-28",
-    "days_since_join": 11,
+    "days_since_join": 14,
     "total_attendances": 1,
     "status": "Active",
     "whatsapp": ""

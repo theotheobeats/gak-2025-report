@@ -3,7 +3,7 @@
     "rank": 1,
     "name": "Joyce ",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   },
@@ -11,7 +11,7 @@
     "rank": 2,
     "name": "Aling Prabu",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   },
@@ -19,7 +19,7 @@
     "rank": 3,
     "name": "Lesti",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   },
@@ -27,7 +27,7 @@
     "rank": 4,
     "name": "Fenny Jakarta",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   },
@@ -35,7 +35,7 @@
     "rank": 5,
     "name": "Canterine",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   },
@@ -43,7 +43,7 @@
     "rank": 6,
     "name": "'Deon (suami Agnes",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Active"
   },
@@ -51,7 +51,7 @@
     "rank": 7,
     "name": "Yulius",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   },
@@ -59,7 +59,7 @@
     "rank": 8,
     "name": "Ibu erna",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   },
@@ -67,7 +67,7 @@
     "rank": 9,
     "name": "Alberto",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   },
@@ -75,7 +75,7 @@
     "rank": 10,
     "name": "Yuni",
     "total_attendances": 1,
-    "avg_per_month": 1.0,
+    "avg_per_year": 1.0,
     "engagement_tier": "Low",
     "status": "Inactive"
   }
